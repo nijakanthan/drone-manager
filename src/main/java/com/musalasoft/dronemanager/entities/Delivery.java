@@ -12,14 +12,14 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "drone_id")
+    @Column(name = "serial_no")
     private String drone;
 
     @ManyToMany
     @JoinTable(
             name = "delivery_medications",
             joinColumns = @JoinColumn(name = "delivery_id"),
-            inverseJoinColumns = @JoinColumn(name = "medication_id"))
+            inverseJoinColumns = @JoinColumn(name = "code"))
     Set<Medication> medications;
 
     public Delivery() {

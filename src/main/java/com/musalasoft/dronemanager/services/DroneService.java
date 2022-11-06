@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.musalasoft.dronemanager.entities.Drone;
 import com.musalasoft.dronemanager.repository.DroneRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DroneService {
 
     private static final Logger log = LoggerFactory.getLogger(DeliveryService.class);

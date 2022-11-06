@@ -7,17 +7,13 @@ import java.util.Set;
 @Table(name = "medication")
 public class Medication {
 
-    @Id
-    @Column(name = "medication_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @Column(nullable = false, name = "name")
     private String name;
 
     @Column(name = "weight")
     private int weight;
 
+    @Id
     @Column(name = "code")
     private String code;
 
@@ -31,21 +27,12 @@ public class Medication {
     public Medication() {
     }
 
-    public Medication(Long id, String name, int weight, String code, byte[] image, Set<Delivery> deliveries) {
-        this.id = id;
+    public Medication(String name, int weight, String code, byte[] image, Set<Delivery> deliveries) {
         this.name = name;
         this.weight = weight;
         this.code = code;
         this.image = image;
         this.deliveries = deliveries;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

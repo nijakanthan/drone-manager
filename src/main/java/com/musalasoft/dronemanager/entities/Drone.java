@@ -11,10 +11,6 @@ import java.util.Set;
 public class Drone {
 
     @Id
-    @Column(name = "drone_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int droneId;
-
     @Column(name = "serial_no", length = 100, nullable = false)
     private String serialNo;
 
