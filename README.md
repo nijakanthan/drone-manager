@@ -7,7 +7,8 @@
 Run `DroneManagerApplication.java` file using the IDE.
 
 ### Use JAR file
-Open command prompt on project-root-folder/jar and run `java -jar drone-manager.jar`
+After running `mvn clean install` command on the project folder.
+Open command prompt on project-root-folder/target folder and run `java -jar drone-manager-0.0.1-SNAPSHOT.jar`
 
 ### View Database
 H2 database is used for the application. <br />
