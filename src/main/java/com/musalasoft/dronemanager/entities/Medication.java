@@ -7,13 +7,17 @@ import java.util.Set;
 @Table(name = "medication")
 public class Medication {
 
+    @Id
+    @Column(name = "medication_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     @Column(nullable = false, name = "name")
     private String name;
 
     @Column(name = "weight")
     private int weight;
 
-    @Id
     @Column(name = "code")
     private String code;
 

@@ -28,19 +28,15 @@ public class Drone {
     @Enumerated(EnumType.ORDINAL)
     private DroneState state;
 
-    @OneToMany(mappedBy = "drone")
-    private Set<Delivery> deliveries;
-
     public Drone() {
     }
 
-    public Drone(String serialNo, DroneModel model, int weightLimit, int batteryCapacity, DroneState state, Set<Delivery> deliveries) {
+    public Drone(String serialNo, DroneModel model, int weightLimit, int batteryCapacity, DroneState state) {
         this.serialNo = serialNo;
         this.model = model;
         this.weightLimit = weightLimit;
         this.batteryCapacity = batteryCapacity;
         this.state = state;
-        this.deliveries = deliveries;
     }
 
     public String getSerialNo() {
@@ -81,13 +77,5 @@ public class Drone {
 
     public void setState(DroneState state) {
         this.state = state;
-    }
-
-    public Set<Delivery> getDeliveries() {
-        return deliveries;
-    }
-
-    public void setDeliveries(Set<Delivery> deliveries) {
-        this.deliveries = deliveries;
     }
 }

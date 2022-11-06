@@ -1,5 +1,7 @@
 package com.musalasoft.dronemanager.entities;
 
+import com.musalasoft.dronemanager.entities.enums.DeliveryState;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,19 +17,23 @@ public class Delivery {
     @Column(name = "serial_no")
     private String drone;
 
+    @Column(name = "state")
+    private DeliveryState state;
+
     @ManyToMany
     @JoinTable(
             name = "delivery_medications",
             joinColumns = @JoinColumn(name = "delivery_id"),
-            inverseJoinColumns = @JoinColumn(name = "code"))
+            inverseJoinColumns = @JoinColumn(name = "medication_id"))
     Set<Medication> medications;
 
     public Delivery() {
     }
 
-    public Delivery(Long id, String drone, Set<Medication> medications) {
+    public Delivery(Long id, String drone, DeliveryState state, Set<Medication> medications) {
         this.id = id;
         this.drone = drone;
+        this.state = state;
         this.medications = medications;
     }
 
@@ -45,6 +51,14 @@ public class Delivery {
 
     public void setDrone(String drone) {
         this.drone = drone;
+    }
+
+    public DeliveryState getState() {
+        return state;
+    }
+
+    public void setState(DeliveryState state) {
+        this.state = state;
     }
 
     public Set<Medication> getMedications() {

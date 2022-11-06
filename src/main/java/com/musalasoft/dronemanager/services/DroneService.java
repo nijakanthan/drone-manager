@@ -1,7 +1,10 @@
 package com.musalasoft.dronemanager.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import com.musalasoft.dronemanager.entities.enums.DroneState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +28,22 @@ public class DroneService {
         return droneRepository.save(drone);
     }
 
-    public Optional<Drone> getDrone(String serialNo) {
+    public Optional<Drone> getDroneBySerialNo(String serialNo) {
         return droneRepository.findById(serialNo);
     }
 
-    public void updateDrone(Drone drone) {
-        droneRepository.save(drone);
+    public List<Drone> getAllDronesByStatus(int state) {
+        return droneRepository.findAllDronesByState(state);
     }
 
-    public List<Drone> getAllDrones() {
-        return droneRepository.findAll();
+    public List<Drone> getAvailableDrones(int state, int battery) {
+        return droneRepository.findAllAvailableDrones(state, battery);
     }
 
-    public List<Drone> getAvailableDrones() {
-        return droneRepository.findAllIdleDrones();
+    public void updateDroneState(String serialNo, DroneState state) {
+        Optional<Drone> drone = droneRepository.findById(serialNo);
+        drone.get().setState(state);
+        droneRepository.save(drone.get());
     }
 
 }

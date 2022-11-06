@@ -1,5 +1,6 @@
 package com.musalasoft.dronemanager.services;
 
+import com.musalasoft.dronemanager.entities.Delivery;
 import com.musalasoft.dronemanager.entities.Medication;
 import com.musalasoft.dronemanager.repository.DeliveryRepository;
 import com.musalasoft.dronemanager.repository.DroneRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class DeliveryService {
@@ -21,7 +23,16 @@ public class DeliveryService {
     public DeliveryService() {
     }
 
-    public List<Medication> getLoadedMedicationByDrone(String serialNo) {
-        return deliveryRepository.findMedicationsByDroneId(serialNo);
+    public Delivery createDelivery(Delivery delivery) {
+        return deliveryRepository.save(delivery);
+    }
+
+    public List<Delivery> findByDrone(String drone) {
+        return deliveryRepository.findItemsByDrone(drone);
+    }
+
+    public int getMedicationsToTalWeight(Set<Medication> medications) {
+        int weight = medications.stream().mapToInt(Medication::getWeight).sum();
+        return weight;
     }
 }

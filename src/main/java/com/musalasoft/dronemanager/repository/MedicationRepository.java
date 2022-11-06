@@ -1,8 +1,8 @@
 package com.musalasoft.dronemanager.repository;
 
 import com.musalasoft.dronemanager.entities.Medication;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface MedicationRepository extends JpaRepository<Medication, Long> {
+public interface MedicationRepository extends CrudRepository<Medication, Long> {
 
 }
